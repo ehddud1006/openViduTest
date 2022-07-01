@@ -10,13 +10,13 @@ import unmuteIcon from "./unmute.png";
 import "./test.css";
 
 // import UserVideoComponent from "./UserVideoComponent";
-// const OPENVIDU_SERVER_URL = "http://3.38.230.215:4443";
-const OPENVIDU_SERVER_URL = "https://" + window.location.hostname + ":4443";
+const OPENVIDU_SERVER_URL = "https://sagang3.duckdns.org";
+// const OPENVIDU_SERVER_URL = "https://" + window.location.hostname + ":4443";
 const OPENVIDU_SERVER_SECRET = "MY_SECRET";
-const nickname = "Participant" + Math.floor(Math.random() * 100);
-// const nickname = "ksw";
+// const nickname = "Participant" + Math.floor(Math.random() * 100);
+const nickname = "ksw";
 export default function App() {
-  const [mySessionId, setMySessionId] = React.useState("SessionA");
+  const [mySessionId, setMySessionId] = React.useState("ses_I72RytASJy");
   const [session, setSession] = React.useState(undefined);
   const [mainStreamManager, setMainStreamManager] = React.useState(undefined);
   const [publisher, setPublisher] = React.useState(undefined);
@@ -78,6 +78,7 @@ export default function App() {
   const createSession = (sessionId) => {
     return new Promise((resolve, reject) => {
       var data = JSON.stringify({ customSessionId: sessionId });
+      console.log(data);
       axios
         .post(OPENVIDU_SERVER_URL + "/openvidu/api/sessions", data, {
           headers: {
@@ -120,7 +121,6 @@ export default function App() {
   };
 
   const createToken = (sessionId) => {
-    console.log("SIISISISIBBALLALALAL");
     return new Promise((resolve, reject) => {
       var data = {};
       axios
